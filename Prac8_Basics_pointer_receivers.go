@@ -32,3 +32,7 @@ func main() {
 	fmt.Println(p1.kmh1())
 
 }
+
+//essentially pointer receiver can do the work of both value and pointer receiver. It can be used in both contexts
+//The value receiver makes a copy of the struct and is suitable for small structs
+//The pointer receiver is suitable for large structs that directly modify it.
