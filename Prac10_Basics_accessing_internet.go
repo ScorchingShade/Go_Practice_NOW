@@ -13,3 +13,5 @@ func main() {
 	fmt.Println(string_body)
 	resp.Body.Close()
 }
+
+//this is how to access internet
