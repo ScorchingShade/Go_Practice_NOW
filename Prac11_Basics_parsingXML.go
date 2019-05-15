@@ -85,10 +85,6 @@ type Location struct {
 	Loc string `xml:"loc"`
 }
 
-//anything with square brackets and number in it is an array, anything without is a slice. arrays are fixed, slices aren't
-//e.g arr [5] is array of int type
-//e.g arr [] is slice of whatever type it is assigned to
-
 //overriding string class with our own method to use here, getting everything only as strings not struct
 func (l Location) String() string {
 	//we use a value receiver to get a string value from xml location tag with this function
@@ -110,4 +106,11 @@ func main() {
 
 }
 
-//this is how to access internet
+//anything with square brackets and number in it is an array, anything without is a slice. arrays are fixed, slices aren't
+//e.g arr [5] is array of int type
+//e.g arr [] is slice of whatever type it is assigned to
+//e.g specifying a slice =>arr:=[]string{"helo","heloo"} //this is obviously within a function// for global use var keyword
+//e.g specifying an array=> arr:=[2]string{"hel","o"}
+// I read about arrays and slices man, trust me use slices, you can even slice an array like this
+// a:=[5]int{1,2,3,4,5},
+// var b []int=a[1:4] //slices numbers 2,3,4
