@@ -4,6 +4,7 @@ package main
 
 import (
 	"encoding/xml"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 )
@@ -18,8 +19,8 @@ type SitemapIndexlean struct {
 }
 
 type News struct {
-	titles    []string `xml:"url>news>title"`
-	keywords  []string `xml:"url>news>keywords"`
+	Titles    []string `xml:"url>news>title"`
+	Keywords  []string `xml:"url>news>Keywords"`
 	Locations []string `xml:"url>loc"`
 }
 
@@ -40,9 +41,20 @@ func main() {
 	xml.Unmarshal(bytes, &s)
 
 	for _, Location := range s.Locations {
-		resp, _ := http.Get(Location)
+		resp, err := http.Get(Location)
+		fmt.Println(err)
 		bytes, _ := ioutil.ReadAll(resp.Body)
 		xml.Unmarshal(bytes, &n)
+		for idx, _ := range n.Titles {
+			news_map[n.Titles[idx]] = NewsMap{n.Keywords[idx], n.Locations[idx]}
+		}
+
+	}
+
+	for idx, data := range news_map {
+		fmt.Println("\n\n\n", idx)
+		fmt.Println("\n", data.Keyword)
+		fmt.Println("\n", data.Location)
 
 	}
 
