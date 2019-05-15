@@ -23,9 +23,17 @@ type News struct {
 	Locations []string `xml:"url>loc"`
 }
 
+//custom struct for mapping newsdata
+type NewsMap struct {
+	Keyword  string
+	Location string
+}
+
 func main() {
 	var s SitemapIndexlean
 	var n News
+	//creating a map
+	news_map := make(map[string]NewsMap)
 
 	resp, _ := http.Get("https://www.washingtonpost.com/news-sitemaps/index.xml")
 	bytes, _ := ioutil.ReadAll(resp.Body)
