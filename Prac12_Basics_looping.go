@@ -41,6 +41,7 @@ func main() {
 
 	//this is a for each loop. the blank param is the index, we don't want to show index thus its blank
 	// the location here is a complete new variable and gets assignment to a range of different values from the sitemap struct datatype var locations
+	//range is just a keyword to iterate over basically any data struct
 	for _, Location := range s.Locations {
 		fmt.Printf("\n%s", Location)
 	}
