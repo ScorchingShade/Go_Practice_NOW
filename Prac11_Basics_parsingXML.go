@@ -89,6 +89,15 @@ type Location struct {
 //e.g arr [5] is array of int type
 //e.g arr [] is slice of whatever type it is assigned to
 
+//overriding string class with our own method to use here, getting everything only as strings not struct
+func (l Location) String() string {
+	//we use a value receiver to get a string value from xml location tag with this function
+
+	//Sprintf formats strings for us
+	return fmt.Sprint(l.Loc)
+
+}
+
 func main() {
 	resp, _ := http.Get("https://www.washingtonpost.com/news-sitemaps/index.xml")
 	bytes, _ := ioutil.ReadAll(resp.Body)
