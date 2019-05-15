@@ -16,4 +16,17 @@ func main() {
 	grades["kalua"] = 111
 	grades["chutwa"] = 122
 	fmt.Println(grades)
+
+	//print the map value of kalua
+	KaluaGrade := grades["kalua"]
+	fmt.Println(KaluaGrade)
+
+	//deleting a key value pair in map
+	delete(grades, "kalua")
+	fmt.Println(grades)
+
+	//iterate through map, k is the index or the key , whereas people is the value
+	for k, people := range grades {
+		fmt.Println(k, ":", people)
+	}
 }
