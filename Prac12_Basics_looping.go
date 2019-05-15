@@ -5,6 +5,7 @@ package main
 import "fmt"
 
 //basic for loop
+// for loop without any parameter runs like while (true) or while (1) , that is forever
 func main() {
 
 	i := 0
