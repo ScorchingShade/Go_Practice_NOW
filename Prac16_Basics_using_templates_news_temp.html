@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <!-- Jquery and data table cdn -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 </head>
 <body>
+
+<!-- The bracketed values allow for adding something from go-->
 <h1 align="center" style="color: darkorange">{{ .Title }}</h1>
 
 <table id="fancytable" class="display">
@@ -33,6 +36,7 @@
 
 </body>
 
+<!--The script to associate fancy tables-->
 <script>$(document).ready(function() {
         $('#fancytable').DataTable();
     } );</script>
