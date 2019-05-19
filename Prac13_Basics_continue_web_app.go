@@ -9,6 +9,8 @@ import (
 	"net/http"
 )
 
+//since the washingtonpost daily changes there xml structure, we kinda pivoted here, we are no longer getting data from internet, but doing the same thing, we are parsing the data from an xml sheet
+
 var washpostXML = []byte(`
 <sitemapindex>
    <sitemap>
