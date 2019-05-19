@@ -76,16 +76,19 @@ US-Cisco-BroadSoft-Acquisition,Cisco Systems Inc,Business,Technology,Communicati
 // we also delete the overriding function  as that fetched us strings. Dude we already got strings here.
 
 type SitemapIndexlean struct {
+	//we make a location type array to store data from sitemap>location
 	Locations []string `xml:"sitemap>loc"`
 }
 
 type News struct {
+	//We create a second datatype news to store titles, keywords and locations
 	Titles    []string `xml:"url>news>title"`
 	Keywords  []string `xml:"url>news>keywords"`
 	Locations []string `xml:"url>loc"`
 }
 
 type NewsMap struct {
+	//This is to iterate through our datatype values
 	Keyword  string
 	Location string
 }
@@ -96,19 +99,32 @@ func main() {
 	news_map := make(map[string]NewsMap)
 
 	bytes := washpostXML
+	//converting a byte stream to actual xml, so as to get values from it. Also we need to store the data in byte stream because that's what we get from internet when we get any xml.
 	xml.Unmarshal(bytes, &s)
 
+	//iterating through every index in the range of available urls/locations, we get locations from our sitemap
 	for _, Location := range s.Locations {
 		resp, _ := http.Get(Location)
 		bytes, _ := ioutil.ReadAll(resp.Body)
 		xml.Unmarshal(bytes, &n)
 
-		for idx, _ := range n.Keywords {
+		//for every location that we get, we need to be able to access it, go inside it
+		for idx, _ := range n.Titles {
+
+			//we use the map with the key as the titles, in the titles array, we move through locations like Title[0], Title[1] etc. We do this using the idx that we created.
+			//idx itself iterates from 0 to the length of the range of titles
+
+			//now this last part is a bit confusing
+			//The Newsmap here is a structure, remember when we made a map on line 99? we defined the key as string, which here is n.Titles[idx], an array of strings
+			//and the value as Newsmap, which is a stuct and can take many values.
+			//so for every key, we are storing two values.
+			// the map will look like ["TechnologyTitle1: {keywords,location of first news}, TechnologyTitle2:{ keywords,location of second news } ] and so on
 			news_map[n.Titles[idx]] = NewsMap{n.Keywords[idx], n.Locations[idx]}
 
 		}
 	}
 
+	//We simply iterate through our populated news_map  by proper formatting here
 	for idx, data := range news_map {
 		fmt.Println("\n\n\n", idx)
 		fmt.Println("\n", data.Keyword)
