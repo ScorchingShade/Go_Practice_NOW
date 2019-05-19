@@ -9,6 +9,16 @@ import (
 	"net/http"
 )
 
+//What is unmarshalling and marshalling?
+/*In computer science, unmarshalling or unmarshaling refers to the process of transforming a representation of an object that was used for storage or transmission to a representation of the object that is executable.
+A serialized object which was used for communication can not be processed by a computer program.
+An unmarshalling interface takes the serialized object and transforms it into an executable form. Unmarshalling (similar to deserialization) is the reverse process of marshalling.
+
+
+In few words, "marshalling" refers to the process of converting the data or the objects inbto a byte-stream, and "unmarshalling" is the reverse process of converting the byte-stream beack to their original data or object.
+The conversion is achieved through "serialization".
+*/
+
 //since the washingtonpost daily changes there xml structure, we kinda pivoted here, we are no longer getting data from internet, but doing the same thing, we are parsing the data from an xml sheet
 
 var washpostXML = []byte(`
