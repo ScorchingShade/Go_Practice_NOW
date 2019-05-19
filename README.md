@@ -1,6 +1,6 @@
 # Go Practice By Ankush Sharma
 
-### Just learning how to build go apps
+### Just learning how to build go apps and practicing them
 
 ##### Series
 - Prac*_Basics deal with all the basic stuff.
