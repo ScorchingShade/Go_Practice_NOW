@@ -3,22 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
 </head>
 <body>
-<h1>{{ .Title }}</h1>
+<h1 align="center" style="color: darkorange">{{ .Title }}</h1>
 
-<table>
+<table id="fancytable" class="display">
+    <col width="35%">
+    <col width="65%">
     <thead>
         <th>Title</th>
         <th>Keywords</th>
     </thead>
     <tbody>
-        <tr>
-            <td>title</td>
-            <td>keyword</td>
-        </tr>
+        {{ range $key, $value := .News }}
+
+            <tr>
+                <td><a href="{{$value.Location}}" target="_blank" >{{$key}}</a></td>
+                <td>{{$value.Keyword}}</td>
+            </tr>
+
+        {{end}}
+
     </tbody>
 </table>
 
 </body>
+
+<script>$(document).ready(function() {
+        $('#fancytable').DataTable();
+    } );</script>
 </html>

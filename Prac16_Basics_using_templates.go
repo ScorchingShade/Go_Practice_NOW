@@ -102,7 +102,7 @@ func newsAggHandlerCom(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	p := NewsAggPageCom{Title: "Amazing News Aggregator", News: news_map}
+	p := NewsAggPageCom{Title: "Washington Post News Aggregator", News: news_map}
 	t, _ := template.ParseFiles("/root/Desktop/Projects/Go_Pros/Practice/Prac16_Basics_using_templates_news_temp.html")
 
 	fmt.Println(t.Execute(w, p))
