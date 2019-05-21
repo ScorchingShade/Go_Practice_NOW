@@ -1,7 +1,7 @@
 # Go Practice By Ankush Sharma
 Version 1.0
 ### Learn how to build go apps and practicing them.
-
+### Building a web news post aggregator
 
 ##### Series
 - Prac*_Basics deal with all the basic stuff.
