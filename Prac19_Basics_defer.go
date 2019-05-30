@@ -19,6 +19,15 @@ func foo() {
 	fmt.Println("Doing something")
 }
 
+func foo2() {
+	for i := 0; i < 5; i++ {
+		defer fmt.Println(i)
+		//basically counts down
+	}
+}
+
 func main() {
 	foo()
+
+	foo2()
 }
