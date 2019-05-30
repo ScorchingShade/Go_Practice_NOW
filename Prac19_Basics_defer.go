@@ -41,6 +41,8 @@ func saySync1(s string) {
 		time.Sleep(time.Millisecond * 100)
 	}
 
+	//we can also use defer to recover after a panic has occurred, how? move to next part
+
 }
 
 func main() {
