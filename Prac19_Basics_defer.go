@@ -4,7 +4,11 @@ package main
 
 import (
 	"fmt"
+	"sync"
+	"time"
 )
+
+var wg1 sync.WaitGroup
 
 func foo() {
 
@@ -26,8 +30,31 @@ func foo2() {
 	}
 }
 
+func saySync1(s string) {
+
+	//previously we were in a situation where the for loop could come in an error and we would had gone in infinite waiting
+	//now the wg1.Done will only work if the for loop works and hence we wont go in infinite wait
+	defer wg1.Done()
+
+	for i := 0; i < 3; i++ {
+		fmt.Println(s)
+		time.Sleep(time.Millisecond * 100)
+	}
+
+}
+
 func main() {
 	foo()
 
 	foo2()
+
+	wg1.Add(1)
+	go saySync1("hey")
+	wg1.Add(1)
+	go saySync1("there")
+	wg1.Wait()
+
+	wg1.Add(1)
+	go saySync1("There")
+	wg1.Wait()
 }
