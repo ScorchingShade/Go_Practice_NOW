@@ -1,0 +1,1 @@
+# This is a basic instruction manual for all the go lectures. To be updated soon!
